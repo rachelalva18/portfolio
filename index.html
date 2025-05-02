@@ -1,0 +1,993 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rachel Alva - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        :root {
+            --bg-color: #bbb8a9;
+            --darker-bg: #5d5d4f;
+            --darkest-bg: #3c3c32;
+            --card-bg: #d3d0c0;
+            --text-color: #222;
+            --highlight-color: #000;
+            --button-bg: #3c3c32;
+            --button-text: #fff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+        background: linear-gradient(-45deg, #cbcfae, #d0c9b0, #a39a85, #f9f7af);
+        background-size: 400% 400%;
+        animation: gradientBG 10s ease infinite;
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        }
+
+        @keyframes gradientBG {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+        }
+
+        .hero {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;    
+            height: 100%;
+            background-image: url('images\whatsapp-backgrounds.jpg');
+            opacity: 1; 
+            z-index: -1;
+            filter: brightness(1.2) saturate(0.8);
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color); 
+            mix-blend-mode: multiply;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Navbar styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: var(--darkest-bg);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+        }
+
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white;
+            z-index: 1001;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Hamburger menu */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+            background: none;
+            border: none;
+        }
+
+        .hamburger div {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 65vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 0;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 30% 70%;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .hero-content {
+            padding: 1rem 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--highlight-color);
+            line-height: 1.2;
+        }
+
+        .hero-content h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--highlight-color);
+            line-height: 1.3;
+        }
+
+        .hero-content p {
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        /* Interests section */
+        .interests {
+            padding: 2rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .interests-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .interest-card {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            border: 1px solid #222;
+            margin-bottom: 1rem;
+        }
+
+        .icon {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* Projects section */
+        .projects-section {
+            padding: 3rem 0;
+            background-color: var(--darker-bg);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .projects-grid {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-card {
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #222;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-image {
+            height: 150px;
+            border: 1px solid #222;
+            margin: 1rem;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-details {
+            padding: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-description {
+            margin-bottom: 1rem;
+        }
+
+        .project-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .view-button, .github-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .view-button:hover, .github-button:hover {
+            opacity: 0.9;
+        }
+
+        .github-button {
+            background-color: #333;
+        }
+
+        /* Tech stack section */
+        .tech-stack {
+            padding: 3rem 0;
+            background-color: var(--bg-color);
+        }
+
+        .tech-stack-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .tech-stack-text {
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .tech-stack-text h2 {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack-text p {
+            font-family: 'Permanent Marker', cursive;
+            font-size: 1.3rem;
+            line-height: 1.5;
+        }
+
+        .tech-stack-image {
+            flex: 1;
+            text-align: center;
+            min-width: 280px;
+        }
+
+        .tech-stack-image p {
+            font-family: 'Permanent Marker', cursive;
+            margin-bottom: 1rem;
+        }
+
+        .tech-stack-image img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Skills section */
+        .skills-section {
+            padding: 3rem 0;
+            background-color: var(--darker-bg);
+            overflow: hidden;
+        }
+
+        .skills-grid {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skills-row {
+            display: flex;
+            gap: 1rem;
+            animation: slideRow 20s linear infinite;
+            margin: 1rem 0;
+            padding: 0.5rem 0;
+        }
+
+
+        .skills-row:nth-child(2) {
+            animation-direction: reverse;
+        }
+
+        @keyframes slideRow {
+            from {
+                transform: translateX(0);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
+
+        .skill-box {
+    display: inline-block;
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    margin: 0 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #222;
+    min-width: 120px; /* Increased from 100px */
+    white-space: nowrap; /* Prevents text from wrapping */
+    width: auto; /* Ensures box grows with content */
+    text-align: center; /* Centers the text */
+    font-size: 0.95rem; /* Slightly smaller font size for longer text */
+}
+
+/* Adjust the animation to account for the wider boxes */
+@keyframes slideRow {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* Make sure the row width is sufficient for the animation */
+.skills-row {
+    display: flex;
+    gap: 1rem;
+    animation: slideRow 50s linear infinite; /* Slowed down a bit */
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    width: fit-content; /* Ensures row expands to fit all boxes */
+}
+
+/* Fix for mobile view */
+@media (max-width: 768px) {
+    .skills-row {
+        width: auto; /* Let it be determined by content */
+        min-width: 200%; /* Ensure it's wide enough for animation */
+    }
+    
+    .skill-box {
+        min-width: 100px; /* Slightly smaller on mobile */
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+        /* Resume section */
+        .resume-section {
+            padding: 3rem 0;
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+
+        .resume-title {
+            color: var(--highlight-color);
+            font-family: 'Permanent Marker', cursive;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .download-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .download-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Contact section */
+        .contact-section {
+            padding: 3rem 0;
+            background-color: var(--darker-bg);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #222;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #222;
+            border-radius: 4px;
+            background-color: rgba(255,255,255,0.7);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            display: inline-block;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover {
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 2rem 0;
+            background-color: var(--darkest-bg);
+            color: white;
+            text-align: center;
+        }
+
+        .footer-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: #ccc;
+        }
+
+        /* Hamburger menu transform for open state */
+        .hamburger.active div:nth-child(1) {
+            transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active div:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active div:nth-child(3) {
+            transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                width: 100%;
+                position: fixed;
+                top: 0;
+                left: 0;
+                background-color: var(--darkest-bg);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1.5rem;
+                height: 100vh;
+                padding: 2rem;
+                z-index: 1000;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-image {
+                order: 2;
+            }
+
+            .hero-content {
+                order: 1;
+                padding: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .interests-container {
+                flex-direction: column;
+            }
+
+            .interest-card {
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            .projects-grid {
+                justify-content: center;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+
+            .tech-stack-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .tech-stack-text, .tech-stack-image {
+                width: 100%;
+            }
+
+            .tech-stack-image {
+                margin-top: 1.5rem;
+            }
+            
+            .skill-box {
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content h2 {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .tech-stack-text h2, 
+            .resume-title {
+                font-size: 1.5rem;
+            }
+
+            .tech-stack-text p {
+                font-size: 1.1rem;
+            }
+
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Fix for the infinite scroll animation */
+        @media (max-width: 768px) {
+            .skills-row {
+                width: 200%; /* Double the width to make the animation work */
+            }
+            
+            .skills-row > div {
+                animation: slideRow 30s linear infinite;
+            }
+        }
+    </style>
+    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Rachel</div>
+        <button class="hamburger" aria-label="Toggle menu">
+            <div></div>
+            <div></div>
+            <div></div>
+        </button>
+        <div class="nav-links">
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="images/resume.pdf" class="nav-link" target="_blank">Resume</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero section -->
+    <section class="hero" id="about">
+        <div class="container hero-container">
+            <div class="hero-image">
+                <img src="images/hero.png" alt="Character illustration" id="character-image">
+            </div>
+            <div class="hero-content">
+                <h1 style="color: #222;">Hey, I'm <br>Rachel Alva</h1>
+                <h2 style="color: #222;">Software Developer & Full-time Tech Geek</h2>
+                <p style="color: #222;">I build thoughtful web applications with a passion for clean design, functional code, and smart solutions. I dive deep into the fundamentals to ensure every line of code makes an impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interests section -->
+    <!-- Replace your current interests section with this -->
+<section class="interests">
+    <div class="container interests-container">
+        <div class="interest-card">
+            <div class="icon">
+                <!-- Linux Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 16.88A7 7 0 1 1 8.13 8a7 7 0 0 1 7.75 8.88z"/>
+                    <path d="M19.13 19.39a2.5 2.5 0 0 0-3.48 0"/>
+                    <path d="M3 3l18 18"/>
+                </svg>
+            </div>
+            <div>
+                <h3>Loves Linux tweaks</h3>
+            </div>
+        </div>
+        <div class="interest-card">
+            <div class="icon">
+                <!-- Code Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <div>
+                <h3>Writes messy code<br>...occasionally</h3>
+            </div>
+        </div>
+        <div class="interest-card">
+            <div class="icon">
+                <!-- Book Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+            </div>
+            <div>
+                <h3>Bookshelf filled with<br>system design books</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects section -->
+    <section class="projects-section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/or.png" alt="Project Image">
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">Payment receipt for fast food joints unsing python</h3>
+                        <p class="project-description">Developed a retail billing system using Python and Tkinter with an intuitive GUI for transactions, cost calculation, and tax handling.
+                            Demonstrated practical software development skills through efficient and user-friendly interface design.
+                            
+                            </p>
+                        <div class="project-buttons">
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="images/or1.jpg" alt="Project Image">
+                    </div>
+                    <div class="project-details">
+                        <h3 class="project-title">Inventory Management using PHP, MySQL, JS, HTML
+                            and CSS
+                            </h3>
+                        <p class="project-description">Developed a user-friendly web interface (JS, HTML, CSS) enabling efficient CRUD operations for inventory and order management.
+                            Implemented real-time stock updates, secure authentication, and streamlined workflows for small to medium businesses.
+                            </p>
+                        <div class="project-buttons">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills section -->
+    <section class="skills-section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-grid">
+                
+                <div class="skills-row">
+                    <div class="skill-box">PYTHON</div>
+                    <div class="skill-box">JAVA</div>
+                    <div class="skill-box">SQL</div>
+                    <div class="skill-box">C PROGRAMMING</div>
+                    <div class="skill-box">R PROGRAMMING</div>
+                    <div class="skill-box">HTML</div>
+                    <div class="skill-box">C# using .Net</div>
+                </div>
+                <div class="skills-row">
+                    <div class="skill-box">PYTHON</div>
+                    <div class="skill-box">JAVA</div>
+                    <div class="skill-box">SQL</div>
+                    <div class="skill-box">C PROGRAMMING</div>
+                    <div class="skill-box">R PROGRAMMING</div>
+                    <div class="skill-box">HTML</div>
+                    <div class="skill-box">C# using .Net</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech stack section -->
+    <section class="tech-stack">
+        <div class="container">
+            <div class="tech-stack-content">
+                <div class="tech-stack-text">
+                    <h2>My favorite Tech Stack:</h2>
+                    <p>Coffee, Ubuntu, and<br>a LOT of Debugging</p>
+                </div>
+                <div class="tech-stack-image">
+                    <p>Checkout my Resume!</p>
+                    <img src="images/techstack.png" alt="Tech stack illustration" id="tech-stack-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume section -->
+    <section class="resume-section" id="resume">
+        <div class="container">
+            <h2 class="resume-title">Checkout my Resume</h2>
+            <a href="images/resume.pdf" class="download-button" target="_blank">Download Resume</a>
+        </div>
+    </section>
+
+    <!-- Contact section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="contact-form">
+                <form id="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Send Message</button>
+                </form>
+                <div id="form-status" style="margin-top: 1rem; text-align: center;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/rachelalva18/" class="social-link"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rachelalva18" class="social-link"><i class="fab fa-github"></i></a>
+            </div>
+            <p>&copy; 2025 Rachel Alva. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-link');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+            document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking nav links
+        navLinksItems.forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && 
+                !navLinks.contains(e.target) && 
+                navLinks.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const navHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.scrollY - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Duplicate skill boxes for continuous animation
+        const skillRows = document.querySelectorAll('.skills-row');
+        skillRows.forEach(row => {
+            const skillBoxes = row.querySelectorAll('.skill-box');
+            skillBoxes.forEach(box => {
+                const clone = box.cloneNode(true);
+                row.appendChild(clone);
+            });
+        });
+
+
+        // Email Section
+        (function() {
+            emailjs.init("YsIjeUYzszVtUISoc"); 
+        })();
+
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const statusDiv = document.getElementById('form-status');
+            statusDiv.textContent = 'Sending...';
+            
+            emailjs.sendForm('service_hzwb94i', 'template_ny6izdg', this)
+                .then(function() {
+                    statusDiv.textContent = 'Message sent successfully!';
+                    document.getElementById('contact-form').reset();
+                }, function(error) {
+                    statusDiv.textContent = 'Failed to send message. Please try again.';
+                    console.error('Error:', error);
+                });
+        });
+
+
+        
+
+
+
+    </script>
+</body>
+</html>
